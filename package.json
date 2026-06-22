@@ -1,0 +1,48 @@
+{
+  "name": "@genie-os/mcp",
+  "version": "0.1.0",
+  "description": "Stdio launcher for the GenieOS MCP server. Bridges stdio JSON-RPC to https://mcp.genieos.pro/v1.",
+  "license": "MIT",
+  "homepage": "https://docs.genieos.pro/mcp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GenieOS-0/mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GenieOS-0/mcp/issues"
+  },
+  "type": "module",
+  "bin": {
+    "genieos-mcp": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup && chmod +x dist/cli.js",
+    "dev": "tsx src/cli.ts",
+    "test": "node --test --import tsx test/*.test.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.5.4"
+  },
+  "keywords": [
+    "genieos",
+    "mcp",
+    "model-context-protocol",
+    "cursor",
+    "claude"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
