@@ -35,7 +35,11 @@ jobs:
             exit 1
           fi
 
-      - run: npm ci
+      # Use `npm install`, not `npm ci`: the committed lockfile would pin only
+      # the host platform's optional deps, and rollup's per-platform native
+      # binary (pulled in by tsup --dts) then fails on the Linux runner
+      # (npm/cli#4828). `npm install` re-resolves optional deps per platform.
+      - run: npm install --no-audit --no-fund
       - run: npm run build
       - run: npm test --if-present
 
